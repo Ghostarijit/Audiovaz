@@ -1,4 +1,4 @@
-<!-- audio_app/templates/base.html -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,16 +9,14 @@
     <title>{% block title %}Audio\/az{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-    <!-- Additional stylesheets, scripts, etc. can be included here -->
 </head>
 <body>
     <header>
         <!-- Your site's header/navigation bar -->
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
-                <!-- Add more navigation items as needed -->
+                <li><a href="/accounts/upload/">Upload Audio</a></li>
+                <li><a href="/accounts/audio-list/">Audio List</a></li>
             </ul>
         </nav>
     </header>
