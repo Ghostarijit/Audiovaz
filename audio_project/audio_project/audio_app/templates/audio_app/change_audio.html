@@ -1,0 +1,11 @@
+<!-- audio_app/templates/audio_app/change_audio.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Change Audio</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Change</button>
+  </form>
+{% endblock %}

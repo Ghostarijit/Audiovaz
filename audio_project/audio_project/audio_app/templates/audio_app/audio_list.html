@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Audio List{% endblock %}
+
+{% block content %}
+  <main>
+    <h2>Audio List</h2>
+
+    <ul>
+      {% for audio in audio_files %}
+        <li>
+          <p>{{ audio.audio_file.name }}</p>
+          <audio controls id="audio-{{ audio.id }}">
+            <source src="{{ audio.audio_file.url }}" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+          <button class="playpause" data-audio-id="{{ audio.id }}">Play/Pause</button>
+          <a class="change-link" href="{% url 'change_audio' audio.id %}">Change</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </main>
+
+  <link rel="stylesheet" href="{% static 'css/audio_list.css' %}">
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var playPauseButtons = document.querySelectorAll('.playpause');
+
+      playPauseButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          var audioId = button.getAttribute('data-audio-id');
+          var audioElement = document.getElementById('audio-' + audioId);
+
+          if (audioElement.paused) {
+            audioElement.play();
+          } else {
+            audioElement.pause();
+          }
+        });
+      });
+    });
+  </script>
+{% endblock %}

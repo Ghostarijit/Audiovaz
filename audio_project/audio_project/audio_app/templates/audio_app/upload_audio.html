@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <main>
+    <h2>Upload Audio</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Upload</button>
+    </form>
+  </main>
+
+  <link rel="stylesheet" href="{% static 'css/upload_audio.css' %}">
+{% endblock %}
